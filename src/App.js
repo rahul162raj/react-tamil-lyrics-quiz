@@ -1,10 +1,21 @@
+import React, { useEffect, useState } from "react";
 import "./styles.css";
+import Navbar from "./Pages/Navbar";
+import Quiz from "./Pages/Quiz";
+import { getAllQuestions } from "./Services/MockQuestions";
 
 export default function App() {
+  const [questions, setQuestions] = useState({});
+
+  useEffect(() => {
+    const questions = getAllQuestions();
+    setQuestions(questions);
+  }, []);
+
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <React.Fragment>
+      <Navbar />
+      <Quiz questions={questions} />
+    </React.Fragment>
   );
 }
