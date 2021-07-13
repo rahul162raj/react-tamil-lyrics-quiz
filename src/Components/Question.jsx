@@ -1,6 +1,8 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import { Typography } from "@material-ui/core";
 
 const Question = ({ question, updateUserAnswers }) => {
   if (question) {
@@ -8,16 +10,11 @@ const Question = ({ question, updateUserAnswers }) => {
     return (
       <div>
         <h1>{question.title}</h1>
-        <Grid spacing={3}>
+        <Grid>
           {Object.keys(options).map((key, index) => (
             <Grid key={index} item style={{ paddingBottom: "12px" }}>
               <Button
                 variant="outlined"
-                color={
-                  question.userAnswer && question.userAnswer === question.answer
-                    ? "success"
-                    : ""
-                }
                 fullwidth="true"
                 onClick={() => {
                   updateUserAnswers(question, key);
@@ -28,7 +25,19 @@ const Question = ({ question, updateUserAnswers }) => {
             </Grid>
           ))}
         </Grid>
-        <h1>{question.userAnswer}</h1>
+        <Box my={4}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            color={
+              question.userAnswer && question.userAnswer === question.answer
+                ? "primary"
+                : "error"
+            }
+          >
+            {question.userAnswer}
+          </Typography>
+        </Box>
       </div>
     );
   } else {
