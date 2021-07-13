@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import FilterTabs from "../Components/FilterTabs";
 import Question from "../Components/Question";
 import { getAllQuestions } from "./../Services/MockQuestions";
 
 export default function Quiz() {
-  const [questions, setQuestions] = useState({});
+  const [questions, setQuestions] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(1);
   const startIndex = 1;
   const endIndex = questions.length;
@@ -35,6 +36,10 @@ export default function Quiz() {
     }
   }
 
+  function goToSection(index) {
+    setQuestionIndex(index);
+  }
+
   if (questions.length === 0) {
     return <h1>empty</h1>;
   } else {
@@ -61,6 +66,7 @@ export default function Quiz() {
           question={questions[questionIndex - 1]}
           updateUserAnswers={updateUserAnswers}
         />
+        <FilterTabs questions={questions} goToSection={goToSection} />
       </React.Fragment>
     );
   }
