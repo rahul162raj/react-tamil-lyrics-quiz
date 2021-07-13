@@ -1,4 +1,6 @@
 import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 
 const Question = ({ question, updateUserAnswers }) => {
   if (question) {
@@ -6,17 +8,21 @@ const Question = ({ question, updateUserAnswers }) => {
     return (
       <div>
         <h1>{question.title}</h1>
-        {Object.keys(options).map((key, index) => (
-          <div key={index}>
-            <button
-              onClick={() => {
-                updateUserAnswers(question, key);
-              }}
-            >
-              {options[key]}
-            </button>
-          </div>
-        ))}
+        <Grid spacing={3}>
+          {Object.keys(options).map((key, index) => (
+            <Grid key={index} item style={{ paddingBottom: "12px" }}>
+              <Button
+                variant="outlined"
+                fullwidth="true"
+                onClick={() => {
+                  updateUserAnswers(question, key);
+                }}
+              >
+                {options[key]}
+              </Button>
+            </Grid>
+          ))}
+        </Grid>
         <h1>{question.userAnswer}</h1>
         <h1>{question.userAnswer === question.answer ? "correct" : "wrong"}</h1>
       </div>
