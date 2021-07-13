@@ -13,6 +13,11 @@ const Question = ({ question, updateUserAnswers }) => {
             <Grid key={index} item style={{ paddingBottom: "12px" }}>
               <Button
                 variant="outlined"
+                color={
+                  question.userAnswer && question.userAnswer === question.answer
+                    ? "success"
+                    : ""
+                }
                 fullwidth="true"
                 onClick={() => {
                   updateUserAnswers(question, key);
@@ -24,7 +29,6 @@ const Question = ({ question, updateUserAnswers }) => {
           ))}
         </Grid>
         <h1>{question.userAnswer}</h1>
-        <h1>{question.userAnswer === question.answer ? "correct" : "wrong"}</h1>
       </div>
     );
   } else {
