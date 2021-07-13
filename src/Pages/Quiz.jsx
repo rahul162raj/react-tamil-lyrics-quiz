@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FilterTabs from "../Components/FilterTabs";
 import Question from "../Components/Question";
 import { getAllQuestions } from "./../Services/MockQuestions";
+import Button from "@material-ui/core/Button";
 
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
@@ -46,13 +47,15 @@ export default function Quiz() {
     return (
       <React.Fragment>
         <div>
-          <button
+          <Button
+            variant="outlined"
+            color="primary"
             onClick={() => {
               updateQuestionIndex(false);
             }}
           >
             previous
-          </button>
+          </Button>
           <p>{questionIndex + "/" + endIndex}</p>
           <button
             onClick={() => {

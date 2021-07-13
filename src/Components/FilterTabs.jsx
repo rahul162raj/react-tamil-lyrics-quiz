@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function FilterTabs({ questions, goToSection }) {
+  const unAnsweredItems = questions.filter((item) => item.userAnswer === null);
+  const answeredItems = questions.filter((item) => item.userAnswer !== null);
   if (questions.length === 0) {
     return <h1>loading</h1>;
   } else {
@@ -15,27 +17,23 @@ export default function FilterTabs({ questions, goToSection }) {
           </div>
         ))}
         <h1>unanswered questions</h1>
-        <p>{questions.filter((item) => item.userAnswer === null).length}</p>
-        {questions
-          .filter((item) => item.userAnswer === null)
-          .map((item, key) => (
-            <div key={key}>
-              <button onClick={() => goToSection(key + 1)}>
-                {key + 1 + ")" + item.title}
-              </button>
-            </div>
-          ))}
+        <p>{unAnsweredItems.length}</p>
+        {unAnsweredItems.map((item, key) => (
+          <div key={key}>
+            <button onClick={() => goToSection(key + 1)}>
+              {key + 1 + ")" + item.title}
+            </button>
+          </div>
+        ))}
         <h1>answered questions</h1>
-        <p>{questions.filter((item) => item.userAnswer !== null).length}</p>
-        {questions
-          .filter((item) => item.userAnswer !== null)
-          .map((item, key) => (
-            <div key={key}>
-              <button onClick={() => goToSection(key + 1)}>
-                {key + 1 + ")" + item.title}
-              </button>
-            </div>
-          ))}
+        <p>{answeredItems.length}</p>
+        {answeredItems.map((item, key) => (
+          <div key={key}>
+            <button onClick={() => goToSection(key + 1)}>
+              {key + 1 + ")" + item.title}
+            </button>
+          </div>
+        ))}
       </div>
     );
   }
