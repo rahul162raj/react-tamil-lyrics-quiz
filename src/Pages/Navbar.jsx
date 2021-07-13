@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
+        <Typography component={"span"} variant="h6" className={classes.title}>
           Quizzz
         </Typography>
         <Button color="inherit">Login</Button>

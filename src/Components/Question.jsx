@@ -27,6 +27,7 @@ const Question = ({ question, updateUserAnswers }) => {
         </Grid>
         <Box my={4}>
           <Typography
+            component={"span"}
             variant="h5"
             gutterBottom
             color={
