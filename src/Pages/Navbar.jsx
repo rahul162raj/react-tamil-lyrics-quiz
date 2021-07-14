@@ -20,7 +20,7 @@ const Navbar = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography component={"span"} variant="h6" className={classes.title}>
-          Quizzz
+          TLyrics
         </Typography>
         <Button color="inherit">Login</Button>
       </Toolbar>

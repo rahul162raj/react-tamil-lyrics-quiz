@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import FilterTabs from "../Components/FilterTabs";
 import Question from "../Components/Question";
 import { getAllQuestions } from "./../Services/MockQuestions";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import PageActions from "../Components/PageActions";
 
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
@@ -49,41 +48,13 @@ export default function Quiz() {
     return (
       <React.Fragment>
         <Box my={4}>
-          <Grid container direction="row" alignItems="center">
-            <Grid>
-              <Button
-                size="small"
-                variant="outlined"
-                color="primary"
-                onClick={() => {
-                  updateQuestionIndex(false);
-                }}
-              >
-                previous
-              </Button>
-            </Grid>
-            <Grid style={{ paddingLeft: "12px", paddingRight: "12px" }}>
-              <h4>{questionIndex + "/" + endIndex}</h4>
-            </Grid>
-            <Grid>
-              <Button
-                size="small"
-                variant="outlined"
-                color="primary"
-                onClick={() => {
-                  updateQuestionIndex(true);
-                }}
-              >
-                next
-              </Button>
-            </Grid>
-          </Grid>
-        </Box>
-        <Box my={4}>
           <Question
             question={questions[questionIndex - 1]}
             updateUserAnswers={updateUserAnswers}
           />
+        </Box>
+        <Box my={4}>
+          <PageActions updateQuestionIndex={updateQuestionIndex} />
         </Box>
         <FilterTabs questions={questions} goToSection={goToSection} />
       </React.Fragment>
