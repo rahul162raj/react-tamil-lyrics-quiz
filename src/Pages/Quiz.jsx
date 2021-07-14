@@ -3,6 +3,7 @@ import FilterTabs from "../Components/FilterTabs";
 import Question from "../Components/Question";
 import { getAllQuestions } from "./../Services/MockQuestions";
 import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import PageActions from "../Components/PageActions";
 
 export default function Quiz() {
@@ -47,16 +48,22 @@ export default function Quiz() {
   } else {
     return (
       <React.Fragment>
-        <Box my={4}>
-          <Question
-            question={questions[questionIndex - 1]}
-            updateUserAnswers={updateUserAnswers}
-          />
-        </Box>
-        <Box my={4}>
-          <PageActions updateQuestionIndex={updateQuestionIndex} />
-        </Box>
-        <FilterTabs questions={questions} goToSection={goToSection} />
+        <Grid container>
+          <Grid item md={6}>
+            <Box my={4}>
+              <Question
+                question={questions[questionIndex - 1]}
+                updateUserAnswers={updateUserAnswers}
+              />
+              <PageActions updateQuestionIndex={updateQuestionIndex} />
+            </Box>
+          </Grid>
+          <Grid item md={6}>
+            <Box my={4}>
+              <FilterTabs questions={questions} goToSection={goToSection} />
+            </Box>
+          </Grid>
+        </Grid>
       </React.Fragment>
     );
   }
