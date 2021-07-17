@@ -36,18 +36,18 @@ export default function Quiz() {
       <React.Fragment>
         <Grid container>
           <Grid item md={9}>
-            <Box>
+            <Box mb={4}>
               <Typography component={"span"} variant="h6" color="textSecondary">
                 {"Question " + questionIndex}
               </Typography>
             </Box>
-            <Box>
+            <Box mb={2}>
               <Question
                 question={questions[questionIndex - 1]}
                 updateUserAnswers={updateUserAnswers}
               />
             </Box>
-            <Box>
+            <Box mt={5} mb={7}>
               <PageActions updateQuestionIndex={updateQuestionIndex} />
             </Box>
           </Grid>

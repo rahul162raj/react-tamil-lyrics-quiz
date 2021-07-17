@@ -10,14 +10,20 @@ const Question = ({ question, updateUserAnswers }) => {
     const options = question.options;
     return (
       <React.Fragment>
-        <h1>{question.title}</h1>
+        <Typography
+          component={"span"}
+          variant="h5"
+          style={{ fontWeight: "medium" }}
+        >
+          {question.title}
+        </Typography>
         <Box>
           {Object.keys(options).map((option, index) => (
-            <Box key={index}>
-              <Grid container>
+            <Box key={index} my={4}>
+              <Grid container alignItems="center">
                 <Grid item>
-                  <Box>
-                    <Radio
+                  <Box mr={2}>
+                    {/* <Radio
                       size="small"
                       color="primary"
                       checked={
@@ -26,15 +32,27 @@ const Question = ({ question, updateUserAnswers }) => {
                       value={option}
                       name="answer-radio-button"
                       inputProps={{ "aria-label": option }}
-                    />
+                    /> */}
+                    <Typography
+                      style={{
+                        fontSize: "0.9375rem"
+                      }}
+                      component={"span"}
+                      variant="button"
+                      gutterBottom
+                    >
+                      A)
+                    </Typography>
                   </Box>
                 </Grid>
                 <Grid item>
                   <Button
-                    fullWidth
+                    style={{
+                      width: "300px"
+                    }}
                     disableRipple
                     variant="outlined"
-                    size="medium"
+                    size="large"
                     onClick={() => {
                       updateUserAnswers(question, option);
                     }}

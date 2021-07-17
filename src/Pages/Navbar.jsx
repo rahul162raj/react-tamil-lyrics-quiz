@@ -33,32 +33,38 @@ const Navbar = () => {
   const classes = useStyles();
   const { mode, toggleTheme } = useContext(ThemeContext);
   return (
-    <AppBar position="static">
-      <Container>
-        <Toolbar disableGutters>
-          <AudiotrackIcon fontSize="small" />
-          <Typography component={"span"} variant="h6" className={classes.title}>
-            Qurics
-          </Typography>
-          <Box mr={2}>
-            <IconButton onClick={toggleTheme}>
-              {mode === "dark" ? (
-                <Brightness7Icon />
-              ) : (
-                <Brightness6Icon style={{ color: "white" }} />
-              )}
-            </IconButton>
-          </Box>
-          <Button
-            size="medium"
-            variant="contained"
-            className={classes.successButton}
-          >
-            Submit
-          </Button>
-        </Toolbar>
-      </Container>
-    </AppBar>
+    <Box mb={5}>
+      <AppBar position="static">
+        <Container>
+          <Toolbar disableGutters>
+            <AudiotrackIcon fontSize="small" />
+            <Typography
+              component={"span"}
+              variant="h6"
+              className={classes.title}
+            >
+              Qurics
+            </Typography>
+            <Box mr={2}>
+              <IconButton onClick={toggleTheme}>
+                {mode === "dark" ? (
+                  <Brightness7Icon />
+                ) : (
+                  <Brightness6Icon style={{ color: "white" }} />
+                )}
+              </IconButton>
+            </Box>
+            <Button
+              size="medium"
+              variant="contained"
+              className={classes.successButton}
+            >
+              Submit
+            </Button>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </Box>
   );
 };
 
