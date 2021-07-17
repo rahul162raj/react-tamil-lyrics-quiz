@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
+
+//pages
 import FilterTabs from "../Components/FilterTabs";
+
+//components
 import Question from "../Components/Question";
+import PageActions from "../Components/PageActions";
+
+//services
 import { getAllQuestions } from "./../Services/MockQuestions";
+
+//material ui
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import PageActions from "../Components/PageActions";
+import { Typography } from "@material-ui/core";
 
 export default function Quiz() {
   const [questions, setQuestions] = useState([]);
@@ -20,8 +29,44 @@ export default function Quiz() {
     setQuestions(questions);
   }, []);
 
-  function updateQuestionIndex(increment) {
-    if (increment) {
+  if (questions.length === 0) {
+    return <h1>Loading</h1>;
+  } else {
+    return (
+      <React.Fragment>
+        <Grid container>
+          <Grid item md={9}>
+            <Box>
+              <Typography component={"span"} variant="h6" color="textSecondary">
+                {"Question " + questionIndex}
+              </Typography>
+            </Box>
+            <Box>
+              <Question
+                question={questions[questionIndex - 1]}
+                updateUserAnswers={updateUserAnswers}
+              />
+            </Box>
+            <Box>
+              <PageActions updateQuestionIndex={updateQuestionIndex} />
+            </Box>
+          </Grid>
+          <Grid item md={3}>
+            <Box>
+              <FilterTabs questions={questions} goToSection={goToSection} />
+            </Box>
+          </Grid>
+        </Grid>
+      </React.Fragment>
+    );
+  }
+
+  function goToSection(index) {
+    setQuestionIndex(index);
+  }
+
+  function updateQuestionIndex(action) {
+    if (action === "previous") {
       const index = questionIndex === endIndex ? startIndex : questionIndex + 1;
       setQuestionIndex(index);
     } else {
@@ -37,34 +82,5 @@ export default function Quiz() {
       allQuestions[index].userAnswer = userAnswer;
       setQuestions(allQuestions);
     }
-  }
-
-  function goToSection(index) {
-    setQuestionIndex(index);
-  }
-
-  if (questions.length === 0) {
-    return <h1>empty</h1>;
-  } else {
-    return (
-      <React.Fragment>
-        <Grid container>
-          <Grid item md={6}>
-            <Box my={4}>
-              <Question
-                question={questions[questionIndex - 1]}
-                updateUserAnswers={updateUserAnswers}
-              />
-              <PageActions updateQuestionIndex={updateQuestionIndex} />
-            </Box>
-          </Grid>
-          <Grid item md={6}>
-            <Box my={4}>
-              <FilterTabs questions={questions} goToSection={goToSection} />
-            </Box>
-          </Grid>
-        </Grid>
-      </React.Fragment>
-    );
   }
 }

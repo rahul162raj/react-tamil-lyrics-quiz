@@ -28,7 +28,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box>
           <Typography component={"span"}>{children}</Typography>
         </Box>
       )}
@@ -73,14 +73,7 @@ export default function FilterTabs({ questions, goToSection }) {
             textColor="primary"
           >
             <Tab label="All" {...a11yProps(0)} />
-            <Tab
-              label={
-                <Badge badgeContent={unAnsweredItems.length} color="primary">
-                  UnAnswered
-                </Badge>
-              }
-              {...a11yProps(1)}
-            />
+            <Tab label="Instructions" {...a11yProps(1)} />
             <Tab
               label={
                 <Badge badgeContent={answeredItems.length} color="primary">
@@ -91,19 +84,27 @@ export default function FilterTabs({ questions, goToSection }) {
             />
           </Tabs>
           <TabPanel value={value} index={0}>
-            {questions.map((item, key) => (
-              <Grid key={key} item style={{ paddingBottom: "16px" }}>
-                <Button
-                  disableElevation
-                  size="medium"
-                  variant="contained"
-                  color="primary"
-                  onClick={() => goToSection(key + 1)}
-                >
-                  {key + 1 + ")" + item.title}
-                </Button>
-              </Grid>
-            ))}
+            <Grid container>
+              {questions.map((item, key) => (
+                <Grid item key={key} item>
+                  <Box mb={2} mr={2}>
+                    <Button
+                      disableElevation
+                      size="medium"
+                      variant={
+                        answeredItems.includes(item) ? "contained" : "outlined"
+                      }
+                      color={
+                        answeredItems.includes(item) ? "primary" : "default"
+                      }
+                      onClick={() => goToSection(key + 1)}
+                    >
+                      {key + 1}
+                    </Button>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
           </TabPanel>
           <TabPanel value={value} index={1}>
             {unAnsweredItems.map((item, key) => (

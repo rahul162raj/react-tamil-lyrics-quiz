@@ -16,10 +16,10 @@ export const questions = [
     title:
       "Kaadhal koNdEn kanavinai vaLarthEn kaNmani unai naan karuththinil niraiththEn",
     options: {
-      A: "Moonu",
-      B: "Nanban",
-      C: "Mayakam Enna",
-      D: "Sura"
+      A: "BMoonu",
+      B: "BNanban",
+      C: "BMayakam Enna",
+      D: "BSura"
     },
     answer: "B"
   }
