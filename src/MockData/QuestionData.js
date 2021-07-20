@@ -7,9 +7,9 @@ export const questions = [
       A: "Moonu",
       B: "Nanban",
       C: "Mayakam Enna",
-      D: "Sura"
+      D: "Sura",
     },
-    answer: "A"
+    answer: "A",
   },
   {
     id: 2,
@@ -19,8 +19,82 @@ export const questions = [
       A: "BMoonu",
       B: "BNanban",
       C: "BMayakam Enna",
-      D: "BSura"
+      D: "BSura",
     },
-    answer: "B"
-  }
+    answer: "B",
+  },
+  {
+    id: 3,
+    title:
+      "Kaadhal koNdEn kanavinai vaLarthEn kaNmani unai naan karuththinil niraiththEn",
+    options: {
+      A: "BMoonu",
+      B: "BNanban",
+      C: "BMayakam Enna",
+      D: "BSura",
+    },
+    answer: "B",
+  },
+  {
+    id: 4,
+    title:
+      "Kaadhal koNdEn kanavinai vaLarthEn kaNmani unai naan karuththinil niraiththEn",
+    options: {
+      A: "BMoonu",
+      B: "BNanban",
+      C: "BMayakam Enna",
+      D: "BSura",
+    },
+    answer: "B",
+  },
+  {
+    id: 5,
+    title:
+      "Kaadhal koNdEn kanavinai vaLarthEn kaNmani unai naan karuththinil niraiththEn",
+    options: {
+      A: "BMoonu",
+      B: "BNanban",
+      C: "BMayakam Enna",
+      D: "BSura",
+    },
+    answer: "B",
+  },
+  {
+    id: 6,
+    title:
+      "Kaadhal koNdEn kanavinai vaLarthEn kaNmani unai naan karuththinil niraiththEn",
+    options: {
+      A: "BMoonu",
+      B: "BNanban",
+      C: "BMayakam Enna",
+      D: "BSura",
+    },
+    answer: "B",
+  },
+  {
+    id: 7,
+    title:
+      "Kaadhal koNdEn kanavinai vaLarthEn kaNmani unai naan karuththinil niraiththEn",
+    options: {
+      A: "BMoonu",
+      B: "BNanban",
+      C: "BMayakam Enna",
+      D: "BSura",
+    },
+    answer: "B",
+  },
+  {
+    id: 8,
+    title:
+      "Kaadhal koNdEn kanavinai vaLarthEn kaNmani unai naan karuththinil niraiththEn",
+    options: {
+      A: "BMoonu",
+      B: "BNanban",
+      C: "BMayakam Enna",
+      D: "BSura",
+    },
+    answer: "B",
+  },
 ];
+
+export const question = [];

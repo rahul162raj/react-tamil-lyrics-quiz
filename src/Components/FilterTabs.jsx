@@ -1,4 +1,6 @@
 import React from "react";
+
+//material ui
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -8,12 +10,11 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import Badge from "@material-ui/core/Badge";
 
 const useStyles = makeStyles({
   root: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 });
 
 function TabPanel(props) {
@@ -39,18 +40,17 @@ function TabPanel(props) {
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
 };
 
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
 export default function FilterTabs({ questions, goToSection }) {
-  const unAnsweredItems = questions.filter((item) => item.userAnswer === null);
   const answeredItems = questions.filter((item) => item.userAnswer !== null);
 
   const classes = useStyles();
@@ -74,67 +74,41 @@ export default function FilterTabs({ questions, goToSection }) {
           >
             <Tab label="All" {...a11yProps(0)} />
             <Tab label="Instructions" {...a11yProps(1)} />
-            <Tab
-              label={
-                <Badge badgeContent={answeredItems.length} color="primary">
-                  Answered
-                </Badge>
-              }
-              {...a11yProps(2)}
-            />
           </Tabs>
           <TabPanel value={value} index={0}>
-            <Grid container>
-              {questions.map((item, key) => (
-                <Grid item key={key} item>
-                  <Box mb={2} mr={2}>
-                    <Button
-                      disableElevation
-                      size="medium"
-                      variant={
-                        answeredItems.includes(item) ? "contained" : "outlined"
-                      }
-                      color={
-                        answeredItems.includes(item) ? "primary" : "default"
-                      }
-                      onClick={() => goToSection(key + 1)}
-                    >
-                      {key + 1}
-                    </Button>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
+            <Box mx={2}>
+              <Grid container>
+                {questions.map((item, key) => (
+                  <Grid item key={key} item>
+                    <Box mt={2} mb={2} mx={1}>
+                      <Button
+                        disableElevation
+                        size="small"
+                        variant={
+                          answeredItems.includes(item) ? "outlined" : "outlined"
+                        }
+                        color={
+                          answeredItems.includes(item) ? "primary" : "default"
+                        }
+                        onClick={() => goToSection(key + 1)}
+                      >
+                        {key + 1}
+                      </Button>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            {unAnsweredItems.map((item, key) => (
-              <Grid key={key} item style={{ paddingBottom: "16px" }}>
-                <Button
-                  disableElevation
-                  size="medium"
-                  variant="contained"
-                  color="primary"
-                  onClick={() => goToSection(key + 1)}
-                >
-                  {key + 1 + ")" + item.title}
-                </Button>
-              </Grid>
-            ))}
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            {answeredItems.map((item, key) => (
-              <Grid key={key} item style={{ paddingBottom: "16px" }}>
-                <Button
-                  disableElevation
-                  size="medium"
-                  variant="contained"
-                  color="primary"
-                  onClick={() => goToSection(key + 1)}
-                >
-                  {key + 1 + ")" + item.title}
-                </Button>
-              </Grid>
-            ))}
+            <Box mx={3} mt={2}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Etiam
+              erat velit scelerisque in. Fringilla ut morbi tincidunt augue
+              interdum velit. Neque convallis a cras semper. Nulla malesuada
+              pellentesque elit eget gravida. Vel elit scelerisque mauris
+              pellentesque pulvinar pellentesque habitant.
+            </Box>
           </TabPanel>
         </Paper>
       </div>

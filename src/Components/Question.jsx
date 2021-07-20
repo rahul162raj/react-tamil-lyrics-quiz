@@ -1,9 +1,10 @@
 import React from "react";
+
+// material ui
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { Typography } from "@material-ui/core";
-import Radio from "@material-ui/core/Radio";
 
 const Question = ({ question, updateUserAnswers }) => {
   if (question) {
@@ -17,71 +18,52 @@ const Question = ({ question, updateUserAnswers }) => {
         >
           {question.title}
         </Typography>
-        <Box>
-          {Object.keys(options).map((option, index) => (
-            <Box key={index} my={4}>
-              <Grid container alignItems="center">
-                <Grid item>
-                  <Box mr={2}>
-                    {/* <Radio
-                      size="small"
-                      color="primary"
-                      checked={
-                        question.userAnswer && question.userAnswer === option
-                      }
-                      value={option}
-                      name="answer-radio-button"
-                      inputProps={{ "aria-label": option }}
-                    /> */}
-                    <Typography
-                      style={{
-                        fontSize: "0.9375rem"
-                      }}
-                      component={"span"}
-                      variant="button"
-                      gutterBottom
-                    >
-                      A)
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item>
-                  <Button
+        {Object.keys(options).map((option, index) => (
+          <Box key={index} my={4}>
+            <Grid container alignItems="center">
+              <Grid item>
+                <Box mr={2}>
+                  <Typography
                     style={{
-                      width: "300px"
+                      fontSize: "0.9375rem",
                     }}
-                    disableRipple
-                    variant="outlined"
-                    size="large"
-                    onClick={() => {
-                      updateUserAnswers(question, option);
-                    }}
+                    component={"span"}
+                    variant="button"
+                    color={
+                      question.userAnswer && question.userAnswer === option
+                        ? "primary"
+                        : "textPrimary"
+                    }
                   >
-                    {options[option]}
-                  </Button>
-                </Grid>
+                    {option})
+                  </Typography>
+                </Box>
               </Grid>
-            </Box>
-          ))}
-        </Box>
-        {/* <Box my={6}>
-          <Typography
-            component={"span"}
-            variant="h5"
-            gutterBottom
-            color={
-              question.userAnswer && question.userAnswer === question.answer
-                ? "primary"
-                : "error"
-            }
-          >
-            {question.userAnswer}
-          </Typography>
-        </Box> */}
+              <Grid item>
+                <Button
+                  style={{
+                    width: "250px",
+                  }}
+                  disableRipple
+                  variant="outlined"
+                  size="large"
+                  color={
+                    question.userAnswer && question.userAnswer === option
+                      ? "primary"
+                      : "default"
+                  }
+                  onClick={() => {
+                    updateUserAnswers(question, option);
+                  }}
+                >
+                  {options[option]}
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
+        ))}
       </React.Fragment>
     );
-  } else {
-    return <h1>loading</h1>;
   }
 };
 

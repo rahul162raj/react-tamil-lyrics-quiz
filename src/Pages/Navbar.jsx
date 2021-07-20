@@ -12,26 +12,30 @@ import IconButton from "@material-ui/core/IconButton";
 import Brightness6Icon from "@material-ui/icons/Brightness6";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import AudiotrackIcon from "@material-ui/icons/Audiotrack";
+
+// contexts
 import { ThemeContext } from "./../Themes";
+import { AppContexts } from "../Contexts";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   successButton: {
     backgroundColor: theme.palette.success.main,
     "&:hover": {
-      backgroundColor: theme.palette.success.dark
-    }
-  }
+      backgroundColor: theme.palette.success.dark,
+    },
+  },
 }));
 
 const Navbar = () => {
   const classes = useStyles();
   const { mode, toggleTheme } = useContext(ThemeContext);
+  const { editMode, toggleEditMode } = useContext(AppContexts);
   return (
     <Box mb={5}>
       <AppBar position="static">
@@ -45,7 +49,7 @@ const Navbar = () => {
             >
               Qurics
             </Typography>
-            <Box mr={2}>
+            <Box mr={1}>
               <IconButton onClick={toggleTheme}>
                 {mode === "dark" ? (
                   <Brightness7Icon />
@@ -54,13 +58,16 @@ const Navbar = () => {
                 )}
               </IconButton>
             </Box>
-            <Button
-              size="medium"
-              variant="contained"
-              className={classes.successButton}
-            >
-              Submit
-            </Button>
+            <Box>
+              <Button
+                size="medium"
+                variant="contained"
+                className={classes.successButton}
+                onClick={toggleEditMode}
+              >
+                Submit
+              </Button>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
