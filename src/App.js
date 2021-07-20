@@ -22,8 +22,8 @@ export default function App() {
         <AppContext>
           <Navbar />
           <Container>
-            <Dashboard />
-            {/* <Quiz /> */}
+            {/* <Dashboard /> */}
+            <Quiz />
           </Container>
         </AppContext>
       </ThemeConfig>
