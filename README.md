@@ -4,4 +4,4 @@ Created with CodeSandbox
 # WIP - Work In Progress
 demo
 
-https://rahul162raj.github.io/csb-0x50b/
+https://xw40d.csb.app/
